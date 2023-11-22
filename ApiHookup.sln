@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHookup", "ApiHookup\ApiHookup.csproj", "{B1901803-B654-4ECA-AAF0-E7B46ABDB4AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1901803-B654-4ECA-AAF0-E7B46ABDB4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1901803-B654-4ECA-AAF0-E7B46ABDB4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1901803-B654-4ECA-AAF0-E7B46ABDB4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1901803-B654-4ECA-AAF0-E7B46ABDB4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE6D638A-6350-401F-8D46-22401EFF514F}
+	EndGlobalSection
+EndGlobal
