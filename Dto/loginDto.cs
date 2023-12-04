@@ -1,6 +1,8 @@
 ﻿namespace ApiHookup.Dto
 {
-    public class Class
+    public class loginDto
     {
+        public string? username { get; set; }
+        public string? password { get; set; }
     }
 }

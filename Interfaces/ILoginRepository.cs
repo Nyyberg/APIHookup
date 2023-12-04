@@ -1,6 +1,7 @@
 ﻿namespace ApiHookup.Interfaces
 {
-    public interface Interface
+    public interface ILoginRepository
     {
+        public 
     }
 }
