@@ -1,9 +1,9 @@
-﻿using ApiHookup.Dto;
+﻿using apihookup.dto;
 
-namespace ApiHookup.Interfaces
+namespace apihookup.interfaces
 {
     public interface IAuthService
     {
-        public string Login(loginDto dto);  
+        string login(loginDto dto);
     }
 }

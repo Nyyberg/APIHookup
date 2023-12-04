@@ -1,6 +1,6 @@
-@ApiHookup_HostAddress = http://localhost:5256
+@apihookup_HostAddress = http://localhost:5219
 
-GET {{ApiHookup_HostAddress}}/weatherforecast/
+GET {{apihookup_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
