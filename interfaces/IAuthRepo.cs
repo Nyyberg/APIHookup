@@ -1,9 +1,10 @@
-﻿using apihookup.dto;
+﻿using apihookup.be;
+using apihookup.dto;
 
 namespace apihookup.interfaces
 {
     public interface IAuthRepo
     { 
-        string getToken(loginDto dto);
+        public User getUser(loginDto dto);
     }
 }

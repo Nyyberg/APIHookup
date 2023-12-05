@@ -3,29 +3,32 @@ using apihookup.interfaces;
 using System.Security.Cryptography;
 using static System.Net.Mime.MediaTypeNames;
 using System.Text;
+using apihookup.be;
 
 namespace apihookup.repository
 {
     public class MockRepo : IAuthRepo
     {
-        public string getToken(loginDto dto)
+        User testUser = new User()
         {
-            if (dto.username == "admin" && dto.password == "admin")
-            {
-                return encrypt(dto);
-            }
-            else
-            {
-                return null;
+            username = "test",
+            password = "test"
+        };
+        User admin = new User()
+        {
+            username = "admin",
+            password = "admin"
+        };
+        List<User> users = new List<User>();
+        public MockRepo()
+        {
+            users.Add(testUser);
+            users.Add(admin);
+        }
+        public User? getUser(loginDto dto)
+        {
+            //compare the username of the dto to the username of the users in the list and return the user if found
+            return users.Find(user => user.username == dto.username);
             }
         }
-
-        private string encrypt(loginDto dto)
-        {
-            var bytes = Encoding.UTF8.GetBytes(dto.password + dto.username);
-            var sha = new SHA256Managed();
-            var hash = sha.ComputeHash(bytes);
-            return Encoding.UTF8.GetString(hash);
-        }
-    }
 }
