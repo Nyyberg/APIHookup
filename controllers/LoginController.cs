@@ -2,6 +2,7 @@
 using apihookup.interfaces;
 using apihookup.service;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace apihookup.Controllers
 {
@@ -11,17 +12,24 @@ namespace apihookup.Controllers
         //login controller
         [HttpGet]
         [Route("login")]
-        public string login(loginDto dto)
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] loginDto dto)
         {
-            if (_auth.login(dto) == null)
+            // Validate the loginDto
+            if (string.IsNullOrEmpty(dto.username) || string.IsNullOrEmpty(dto.password))
             {
-                //return http status code 401
-                return "401";
+                return BadRequest("Username and password are required.");
             }
-            else
+            var response = _auth.login(dto);
+            // Perform authentication logic (e.g., check credentials against a database)
+            if (response != null)
             {
-                return _auth.login(dto);
+                // Return a success message or token
+                return Ok(response);
             }
+
+            // Return an unauthorized status code
+            return Unauthorized("Invalid credentials");
         }
     }
-}
+    }
