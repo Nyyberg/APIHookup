@@ -21,7 +21,7 @@ namespace apihookup.service
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("username", userInfo.username) }),
                 Expires = DateTime.UtcNow.AddHours(expiriationTime),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.Aes128Encryption)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));

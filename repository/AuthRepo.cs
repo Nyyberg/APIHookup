@@ -1,4 +1,5 @@
-﻿using apihookup.dto;
+﻿using apihookup.be;
+using apihookup.dto;
 using apihookup.interfaces;
 
 namespace apihookup.repository
@@ -13,7 +14,7 @@ namespace apihookup.repository
         /// a user object with username and password if found
         /// </returns>
         /// <exception cref="NotImplementedException"></exception>
-        public string getUser(loginDto dto)
+        public User getUser(loginDto dto)
         {
             throw new NotImplementedException();
         }

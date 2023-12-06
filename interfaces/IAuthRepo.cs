@@ -5,6 +5,6 @@ namespace apihookup.interfaces
 {
     public interface IAuthRepo
     { 
-        public User getUser(loginDto dto);
+        User getUser(loginDto dto);
     }
 }
