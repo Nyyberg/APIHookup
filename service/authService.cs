@@ -1,7 +1,9 @@
 ﻿using apihookup.be;
 using apihookup.dto;
+using apihookup.helpers;
 using apihookup.interfaces;
 using apihookup.repository;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -13,10 +15,19 @@ namespace apihookup.service
     {
         IAuthRepo _repo = new MockRepo();
         int expiriationTime = 24;
+        private readonly AppSettings _appSettings;
+
+        public authService(IOptions<AppSettings> appSettings)
+        {
+            
+            _appSettings = appSettings.Value;
+        }
+
+
 
         public string GenerateJSONWebToken(loginDto userInfo)
         {
-            var key = Encoding.UTF8.GetBytes("secet");
+            var key = Encoding.UTF8.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("username", userInfo.username) }),

@@ -1,3 +1,6 @@
+using apihookup.helpers;
+using apihookup.interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
+
+//add scoped services
+builder.Services.AddScoped<IAuthService, IAuthService>();
+
+//add appsettings to the configuration
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 var app = builder.Build();
 
