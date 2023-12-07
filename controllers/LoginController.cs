@@ -6,6 +6,7 @@ using System.Net;
 
 namespace apihookup.Controllers
 {
+    [Route("[controller]")]
     public class loginController : ControllerBase
     {
         IAuthService _auth;
@@ -21,21 +22,14 @@ namespace apihookup.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] loginDto dto)
         {
-            // Validate the loginDto
-            if (string.IsNullOrEmpty(dto.username) || string.IsNullOrEmpty(dto.password))
+            try
             {
-                return BadRequest("Username and password are required.");
+                return Ok(_auth.login(dto));
             }
-            var response = _auth.login(dto);
-            // Perform authentication logic (e.g., check credentials against a database)
-            if (response != null)
+            catch (Exception e)
             {
-                // Return a success message or token
-                return Ok(response);
+                return BadRequest(e.Message);
             }
-
-            // Return an unauthorized status code
-            return Unauthorized("Invalid credentials");
         }
     }
     }

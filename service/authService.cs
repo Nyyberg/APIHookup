@@ -40,19 +40,12 @@ namespace apihookup.service
 
         public string login(loginDto dto)
         {
-            User  user = _repo.getUser(dto);
-            if (user == null)
-            {
-                throw new Exception("Username or password is not correct");
-            }
-            else if (user.password != dto.password)
-            {
-                throw new Exception("Username or password is not correct");
-            }
-            else
+            var  user = _repo.getUser(dto);
+            if (user != null && user.password == dto.password)
             {
                 return GenerateJSONWebToken(dto);
             }
+            throw new Exception("Invalid password");
         }
     }
 }
