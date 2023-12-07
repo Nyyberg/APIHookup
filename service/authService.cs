@@ -13,13 +13,13 @@ namespace apihookup.service
 {
     public class authService : IAuthService
     {
-        IAuthRepo _repo = new MockRepo();
+        private readonly IAuthRepo _repo;
         int expiriationTime = 24;
         private readonly AppSettings _appSettings;
 
-        public authService(IOptions<AppSettings> appSettings)
+        public authService(IOptions<AppSettings> appSettings, IAuthRepo authRepo)
         {
-            
+            _repo = authRepo;
             _appSettings = appSettings.Value;
         }
 

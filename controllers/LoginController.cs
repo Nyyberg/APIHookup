@@ -8,7 +8,13 @@ namespace apihookup.Controllers
 {
     public class loginController : ControllerBase
     {
-        IAuthService _auth = new authService();
+        IAuthService _auth;
+
+        public loginController(IAuthService auth)
+        {
+            _auth = auth;
+        }
+
         //login controller
         [HttpGet]
         [Route("login")]

@@ -1,5 +1,7 @@
 using apihookup.helpers;
 using apihookup.interfaces;
+using apihookup.repository;
+using apihookup.service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //add scoped services
-builder.Services.AddScoped<IAuthService, IAuthService>();
+builder.Services.AddScoped<IAuthService, authService>();
+
+//!!change to AuthRepo when ready to use real database!!
+builder.Services.AddScoped<IAuthRepo, MockRepo>();
+
 
 //add appsettings to the configuration
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
