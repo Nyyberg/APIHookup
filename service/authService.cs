@@ -45,7 +45,7 @@ namespace apihookup.service
             {
                 return GenerateJSONWebToken(dto);
             }
-            throw new Exception("Invalid password");
+            throw new Exception("Invalid password or username");
         }
     }
 }

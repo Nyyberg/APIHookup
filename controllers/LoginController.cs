@@ -17,8 +17,6 @@ namespace apihookup.Controllers
         }
 
         //login controller
-        [HttpGet]
-        [Route("login")]
         [HttpPost("login")]
         public IActionResult Login([FromBody] loginDto dto)
         {
