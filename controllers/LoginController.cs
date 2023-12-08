@@ -1,8 +1,6 @@
 ﻿using apihookup.dto;
 using apihookup.interfaces;
-using apihookup.service;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace apihookup.Controllers
 {
