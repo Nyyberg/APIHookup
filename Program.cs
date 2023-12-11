@@ -21,6 +21,7 @@ builder.Services.AddScoped<IAuthService, authService>();
 //!!change to AuthRepo when ready to use real database!!
 builder.Services.AddScoped<IAuthRepo, MockRepo>();
 builder.Services.AddScoped<ISqlTableRepo, MockTableRepo>();
+builder.Services.AddScoped<IHookupRepo, MockHookupRepo>();
 
 //add appsettings to the configuration
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));

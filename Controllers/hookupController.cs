@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using apihookup.dto;
+using apihookup.interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace apihookup.Controllers
 {
     public class hookupController : ControllerBase
     {
-
-        public hookupController()
+        IHookupRepo _repo;
+        public hookupController(IHookupRepo repo)
         {
-
+            _repo = repo;
         }
 
         //get all registered hookups
@@ -19,7 +21,7 @@ namespace apihookup.Controllers
         {
             try
             {
-                return Ok();
+                return Ok(_repo.GetHookups());
             }
             catch (Exception e)
             {
@@ -31,11 +33,11 @@ namespace apihookup.Controllers
         //TODO: implement register a new hookup
         [Authorize]
         [HttpPost("registerHookup")]
-        public IActionResult RegisterHookup()
+        public IActionResult RegisterHookup([FromBody] HookupDto dto)
         {
             try
             {
-                return Ok();
+                return Ok(_repo.RegisterHookup(dto));
             }
             catch (Exception e)
             {
@@ -47,11 +49,11 @@ namespace apihookup.Controllers
         //TODO: implement remove a hookup
         [Authorize]
         [HttpDelete("removeHookup")]
-        public IActionResult RemoveHookup()
+        public IActionResult RemoveHookup(int id)
         {
             try
             {
-                return Ok();
+                return Ok(id);
             }
             catch (Exception e)
             {
@@ -63,11 +65,11 @@ namespace apihookup.Controllers
         //TODO: implement update a hookup
         [Authorize]
         [HttpPut("updateHookup")]
-        public IActionResult UpdateHookup()
+        public IActionResult UpdateHookup(HookupDto dto)
         {
             try
             {
-                return Ok();
+                return Ok(_repo.UpdateHookup(dto));
             }
             catch (Exception e)
             {
