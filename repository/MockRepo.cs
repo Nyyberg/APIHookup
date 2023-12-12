@@ -25,7 +25,7 @@ namespace apihookup.repository
             users.Add(testUser);
             users.Add(admin);
         }
-        public User? getUser(loginDto dto)
+        public User? getUser(IoginDto dto)
         {
             //compare the username of the dto to the username of the users in the list and return the user if found
             return users.Find(user => user.username == dto.username);

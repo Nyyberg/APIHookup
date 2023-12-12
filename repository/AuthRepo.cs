@@ -14,7 +14,7 @@ namespace apihookup.repository
         /// a user object with username and password if found
         /// </returns>
         /// <exception cref="NotImplementedException"></exception>
-        public User getUser(loginDto dto)
+        public User getUser(IoginDto dto)
         {
             throw new NotImplementedException();
         }

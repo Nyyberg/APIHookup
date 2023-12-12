@@ -16,7 +16,7 @@ namespace apihookup.Controllers
 
         //login controller
         [HttpPost("login")]
-        public IActionResult Login([FromBody] loginDto dto)
+        public IActionResult Login([FromBody] IoginDto dto)
         {
             try
             {

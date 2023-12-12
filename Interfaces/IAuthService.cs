@@ -4,8 +4,8 @@ namespace apihookup.interfaces
 {
     public interface IAuthService
     {
-        string login(loginDto dto);
+        string login(IoginDto dto);
 
-        string GenerateJSONWebToken(loginDto userInfo);
+        string GenerateJSONWebToken(IoginDto userInfo);
     }
 }
