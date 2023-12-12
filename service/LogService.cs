@@ -5,7 +5,7 @@ namespace apihookup.service
 {
     public class LogService : ILogService
     {
-        ILogRepo _logRepo;
+        private readonly ILogRepo _logRepo;
         public LogService(ILogRepo logRepo)
         {
             _logRepo = logRepo;

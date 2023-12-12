@@ -1,5 +1,6 @@
 using apihookup.helpers;
 using apihookup.interfaces;
+using apihookup.Models;
 using apihookup.repository;
 using apihookup.service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,11 +18,11 @@ builder.Services.AddSwaggerGen();
 
 //add scoped services
 builder.Services.AddScoped<IAuthService, authService>();
-
-//!!change to AuthRepo when ready to use real database!!
-builder.Services.AddScoped<IAuthRepo, MockRepo>();
-builder.Services.AddScoped<ISqlTableRepo, MockTableRepo>();
-builder.Services.AddScoped<IHookupRepo, MockHookupRepo>();
+builder.Services.AddScoped<IAuthRepo, AuthRepo>();
+builder.Services.AddScoped<IHookupRepo, HookupRepo>();
+builder.Services.AddScoped<ILogService, LogService>();
+builder.Services.AddScoped<ILogRepo, LogRepo>();
+builder.Services.AddDbContext<sqlContext>();
 
 //add appsettings to the configuration
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
