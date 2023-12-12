@@ -25,6 +25,7 @@ builder.Services.AddScoped<IHookupRepo, MockHookupRepo>();
 
 //add appsettings to the configuration
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("ConnectionStrings"));
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
