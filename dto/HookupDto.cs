@@ -19,9 +19,9 @@ namespace apihookup.dto
         /// <summary>
         /// body of the request 
         /// example body:
-        /// body.Add(new Dictionary<string, string> { { "parameterName", "sqlQuery" } });
+        /// body.Add(
         /// </summary>
-        public List<Dictionary<string, string>> body { get; set; } 
+        public List<bodyDto> bodies { get; set; }
         /// <summary>
         /// header of the request
         /// example header:

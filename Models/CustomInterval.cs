@@ -7,7 +7,7 @@ public partial class CustomInterval
 {
     public int? CustomCalendarBeId { get; set; }
 
-    public DateTime? IntervalDateTime { get; set; }
+    public DateTime? CustomIntervalDateTime { get; set; }
 
     public virtual CustomCalendarBe? CustomCalendarBe { get; set; }
 }

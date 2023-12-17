@@ -4,14 +4,15 @@ using apihookup.Models;
 
 namespace apihookup.repository
 {
-    public class HookupRepo : IHookupRepo
+    public class exampleHookupRepo : IHookupRepo
     {
         public List<HookupBe> GetHookups()
         {
+            //create a Completed hookupBe with body and header
             throw new NotImplementedException();
         }
 
-        public HookupBe RegisterHookup(HookupBe dto)
+        public HookupBe RegisterHookup(HookupBe be)
         {
             throw new NotImplementedException();
         }
@@ -21,7 +22,7 @@ namespace apihookup.repository
             throw new NotImplementedException();
         }
 
-        public HookupBe UpdateHookup(HookupBe dto)
+        public HookupBe UpdateHookup(HookupBe be)
         {
             throw new NotImplementedException();
         }

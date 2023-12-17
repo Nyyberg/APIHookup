@@ -11,5 +11,5 @@ public partial class CustomCalendarBe
 
     public DateTime? TimeOfDay { get; set; }
 
-    public virtual HookupBe? HookupBe { get; set; }
+    public virtual ICollection<HookupBe> HookupBes { get; set; } = new List<HookupBe>();
 }

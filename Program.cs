@@ -1,8 +1,10 @@
+using apihookup.dto;
 using apihookup.helpers;
 using apihookup.interfaces;
 using apihookup.Models;
 using apihookup.repository;
 using apihookup.service;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -10,6 +12,19 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var config = new MapperConfiguration(conf =>
+{
+    // BE to DTO
+    conf.CreateMap<HookupBe, HookupDto>();
+    conf.CreateMap<Body,  HookupDto>();
+
+    // DTO to BE
+    conf.CreateMap<HookupDto, HookupBe>();
+    conf.CreateMap<HookupDto, Body>();
+});
+var mapper = config.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
