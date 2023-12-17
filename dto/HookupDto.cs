@@ -16,19 +16,7 @@ namespace apihookup.dto
         /// get, post, put, delete
         /// </summary>
         public string methodType { get; set; }
-        /// <summary>
-        /// body of the request 
-        /// example body:
-        /// body.Add(
-        /// </summary>
-        public List<bodyDto> bodies { get; set; }
-        /// <summary>
-        /// header of the request
-        /// example header:
-        /// header.Add(new Dictionary<string, string> { { "keyName", "value" } });
-        /// </summary>
-        public List<Dictionary<string, string>>? header { get; set; } 
 
-        public CustomCalender? CustomInterval { get; set; }
+        public List<DateTime>? time { get; set; }
     }
 }
