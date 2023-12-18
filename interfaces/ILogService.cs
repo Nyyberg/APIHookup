@@ -1,4 +1,4 @@
-﻿using apihookup.Models;
+﻿using ApiHookup.Models;
 
 namespace apihookup.interfaces
 {

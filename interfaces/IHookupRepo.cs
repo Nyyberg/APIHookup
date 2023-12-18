@@ -1,5 +1,5 @@
 ﻿using apihookup.dto;
-using apihookup.Models;
+using ApiHookup.Models;
 
 namespace apihookup.interfaces
 {
@@ -8,12 +8,28 @@ namespace apihookup.interfaces
         //get all registered hookups
         List<HookupBe> GetHookups();
 
-        //register a new hookup
-        HookupBe RegisterHookup(HookupBe dto);
+        //add a body
+        Body AddBody(Body body);
+
+        //add a hookup
+        HookupBe AddHookup(HookupBe hookup);
+
+        //add a header
+        Header AddHeader(Header header);
+
+        //update a body
+        Body UpdateBody(Body body);
+
+        //update a header
+        Header UpdateHeader(Header header);
+
+        //get a hookup by id
+        HookupBe GetHookupById(int id);
+
         //remove a hookup
         void RemoveHookup(int id);
 
         //update a hookup
-        HookupBe UpdateHookup(HookupBe dto);
+        HookupBe UpdateHookup(HookupBe hookup);
     }
 }

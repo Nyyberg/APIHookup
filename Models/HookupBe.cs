@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace apihookup.Models;
+namespace ApiHookup.Models;
 
 public partial class HookupBe
 {
@@ -9,13 +9,17 @@ public partial class HookupBe
 
     public string? Url { get; set; }
 
+    public string? MethodType { get; set; }
+
     public bool? IntervalIsEveryDay { get; set; }
+
+    public bool? IntervalIsEveryWeek { get; set; }
+
+    public bool? IntervalIsEveryMonth { get; set; }
 
     public DateTime? IntervalTimeOfDay { get; set; }
 
     public int? CustomCalendarBeId { get; set; }
-
-    public string? MethodType { get; set; }
 
     public virtual ICollection<Body> Bodies { get; set; } = new List<Body>();
 

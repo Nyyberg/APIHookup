@@ -1,9 +1,9 @@
 using apihookup.dto;
 using apihookup.helpers;
 using apihookup.interfaces;
-using apihookup.Models;
 using apihookup.repository;
 using apihookup.service;
+using ApiHookup.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -16,12 +16,16 @@ var config = new MapperConfiguration(conf =>
 {
     // BE to DTO
     conf.CreateMap<HookupBe, HookupDto>();
-    conf.CreateMap<Body,  HookupDto>();
+    conf.CreateMap<Body, BodyDto>();
+    conf.CreateMap<Header, HeaderDto>();
 
     // DTO to BE
     conf.CreateMap<HookupDto, HookupBe>();
-    conf.CreateMap<HookupDto, Body>();
+    conf.CreateMap<BodyDto, Body>();
+    conf.CreateMap<HeaderDto, Header>();
 });
+
+//create mapper
 var mapper = config.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
@@ -35,14 +39,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthService, authService>();
 builder.Services.AddScoped<IAuthRepo, AuthRepo>();
 builder.Services.AddScoped<IHookupRepo, HookupRepo>();
+builder.Services.AddScoped<IHookupService, HookupService>();
 builder.Services.AddScoped<ILogService, LogService>();
 builder.Services.AddScoped<ILogRepo, LogRepo>();
 builder.Services.AddDbContext<sqlContext>();
 
-//add appsettings to the configuration
+//add appsettings to the configuration, for global read access
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("ConnectionStrings"));
 
+//rules for authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters

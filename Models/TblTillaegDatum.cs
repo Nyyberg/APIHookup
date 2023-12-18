@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace apihookup.Models;
+namespace ApiHookup.Models;
 
 public partial class TblTillaegDatum
 {

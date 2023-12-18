@@ -1,6 +1,5 @@
 ﻿using apihookup.dto;
 using apihookup.interfaces;
-using apihookup.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,12 +8,10 @@ namespace apihookup.Controllers
 {
     public class hookupController : ControllerBase
     {
-        private IHookupRepo _repo;
-        private IMapper _mapper;
-        public hookupController(IHookupRepo repo, IMapper mapper)
+        private IHookupService _Service;
+        public hookupController( IHookupService hookupService)
         {
-            _repo = repo;
-            _mapper = mapper;
+            _Service = hookupService;
         }
 
         //remove a hookup
@@ -25,7 +22,8 @@ namespace apihookup.Controllers
         {
             try
             {
-                return Ok(id);
+                _Service.RemoveHookup(id);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -39,7 +37,14 @@ namespace apihookup.Controllers
         [HttpPut("updateHookup")]
         public IActionResult UpdateHookup(HookupDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.UpdateHookup(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //add a hookup
@@ -47,23 +52,44 @@ namespace apihookup.Controllers
         [HttpPost("addHookup")]
         public IActionResult AddHookup(HookupDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.AddHookup(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //add a body
         [Authorize]
         [HttpPost("addBody")]
-        public IActionResult AddBody(Body dto)
+        public IActionResult AddBody(BodyDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.AddBody(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //add a header
         [Authorize]
         [HttpPost("addHeader")]
-        public IActionResult AddHeader(Header dto)
+        public IActionResult AddHeader(HeaderDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.AddHeader(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //get all hookups
@@ -72,7 +98,14 @@ namespace apihookup.Controllers
         [HttpGet("getAllHookups")]
         public IActionResult GetAllHookups()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.GetHookups());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //get a hookubBe by id with all bodies and headers
@@ -80,23 +113,44 @@ namespace apihookup.Controllers
         [HttpGet("getHookupById")]
         public IActionResult GetHookupById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.GetHookupById(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //update a body
         [Authorize]
         [HttpPut("updateBody")]
-        public IActionResult UpdateBody(Body dto)
+        public IActionResult UpdateBody(BodyDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.UpdateBody(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         //update a header
         [Authorize]
         [HttpPut("updateHeader")]
-        public IActionResult UpdateHeader(Header dto)
+        public IActionResult UpdateHeader(HeaderDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_Service.UpdateHeader(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

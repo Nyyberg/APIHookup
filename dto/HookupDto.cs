@@ -7,16 +7,16 @@ namespace apihookup.dto
     /// </summary>
     public class HookupDto
     {
-        public int? id { get; set; }
-        /// <summary>
-        /// endpoint to call
-        /// </summary>
-        public string url { get; set; }
-        /// <summary>
-        /// get, post, put, delete
-        /// </summary>
-        public string methodType { get; set; }
+        public int? Id { get; set; }
 
-        public List<DateTime>? time { get; set; }
+        public string? Url { get; set; }
+
+        public bool? IntervalIsEveryDay { get; set; }
+
+        public DateTime? IntervalTimeOfDay { get; set; }
+
+        public int? CustomCalendarBeId { get; set; }
+
+        public string? MethodType { get; set; }
     }
 }

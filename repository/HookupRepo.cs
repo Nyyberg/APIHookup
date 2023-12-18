@@ -1,29 +1,74 @@
 ﻿using apihookup.dto;
 using apihookup.interfaces;
-using apihookup.Models;
+using ApiHookup.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace apihookup.repository
 {
     public class HookupRepo : IHookupRepo
     {
-        public List<HookupBe> GetHookups()
+        private readonly sqlContext _context;
+        public HookupRepo(sqlContext dbContext)
         {
-            throw new NotImplementedException();
+            _context = dbContext;
         }
 
-        public HookupBe RegisterHookup(HookupBe dto)
+        public Body AddBody(Body body)
         {
-            throw new NotImplementedException();
+            _context.Add(body);
+            _context.SaveChanges();
+            return body;
+        }
+
+        public Header AddHeader(Header header)
+        {
+            _context.Add(header);
+            _context.SaveChanges();
+            return header;
+        }
+
+        public HookupBe AddHookup(HookupBe hookup)
+        {
+            _context.Add(hookup);
+            _context.SaveChanges();
+            return hookup;
+        }
+
+        public HookupBe GetHookupById(int id)
+        {
+            return _context.Set<HookupBe>().Find(id) ?? throw new Exception("could not find the Hookup");
+        }
+
+        public List<HookupBe> GetHookups()
+        {
+            return _context.Set<HookupBe>().ToList();
         }
 
         public void RemoveHookup(int id)
         {
-            throw new NotImplementedException();
+            _context.Set<HookupBe>().Remove(GetHookupById(id));
+            _context.SaveChanges();
         }
 
-        public HookupBe UpdateHookup(HookupBe dto)
+        public Body UpdateBody(Body body)
         {
-            throw new NotImplementedException();
+            _context.Set<Body>().Update(body);
+            _context.SaveChanges();
+            return body;
+        }
+
+        public Header UpdateHeader(Header header)
+        {
+            _context.Set<Header>().Update(header);
+            _context.SaveChanges();
+            return header;
+        }
+
+        public HookupBe UpdateHookup(HookupBe hookup)
+        {
+            _context.Set<HookupBe>().Update(hookup);
+            _context.SaveChanges();
+            return hookup;
         }
     }
 }

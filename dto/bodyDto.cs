@@ -1,6 +1,6 @@
 ﻿namespace apihookup.dto
 {
-    public class bodyDto
+    public class BodyDto
     {
         public string? bodyType { get; set; }
         public string? parameterName { get; set; }

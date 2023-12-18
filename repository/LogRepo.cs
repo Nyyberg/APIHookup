@@ -1,5 +1,5 @@
 ﻿using apihookup.interfaces;
-using apihookup.Models;
+using ApiHookup.Models;
 
 namespace apihookup.repository
 {
@@ -17,6 +17,7 @@ namespace apihookup.repository
             {
                 Log log = _context.Logs.Find(id) ?? throw new Exception("Log not found");
                 _context.Logs.Remove(log);
+                _context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -38,6 +39,7 @@ namespace apihookup.repository
                 }
                 //remove all logs
                 _context.Logs.RemoveRange(logs);
+                _context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -69,6 +71,7 @@ namespace apihookup.repository
         {
             try { 
                 _context.Logs.Add(log); 
+                _context.SaveChanges();
             }
             catch (Exception e) 
             { 

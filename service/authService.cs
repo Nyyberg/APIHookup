@@ -14,7 +14,10 @@ namespace apihookup.service
     public class authService : IAuthService
     {
         private readonly IAuthRepo _repo;
+
+        //time of a tokens lifespan in hours
         int expiriationTime = 24;
+
         private readonly AppSettings _appSettings;
 
         public authService(IOptions<AppSettings> appSettings, IAuthRepo authRepo)
