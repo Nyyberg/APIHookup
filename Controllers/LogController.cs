@@ -28,7 +28,7 @@ namespace apihookup.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("getLogById")]
         public IActionResult GetLogsByHookupId(int id)
         {
             try
@@ -56,7 +56,7 @@ namespace apihookup.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("deleteLogById")]
         public IActionResult DeleteLogById(int id)
         {
             try
