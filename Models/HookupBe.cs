@@ -19,11 +19,9 @@ public partial class HookupBe
 
     public DateTime? IntervalTimeOfDay { get; set; }
 
-    public int? CustomCalendarBeId { get; set; }
-
     public virtual ICollection<Body> Bodies { get; set; } = new List<Body>();
 
-    public virtual CustomCalendarBe? CustomCalendarBe { get; set; }
+    public virtual ICollection<CustomCalendarBe> CustomCalendarBes { get; set; } = new List<CustomCalendarBe>();
 
     public virtual ICollection<Log> Logs { get; set; } = new List<Log>();
 }

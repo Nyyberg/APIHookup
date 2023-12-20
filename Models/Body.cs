@@ -15,5 +15,7 @@ public partial class Body
 
     public string? SqlQuery { get; set; }
 
+    public string? Custom { get; set; }
+
     public virtual HookupBe? HookupBe { get; set; }
 }

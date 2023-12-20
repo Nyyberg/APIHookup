@@ -10,4 +10,4 @@ public partial class CustomInterval
     public DateTime? CustomIntervalDateTime { get; set; }
 
     public virtual CustomCalendarBe? CustomCalendarBe { get; set; }
-}
+} 

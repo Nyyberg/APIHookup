@@ -7,7 +7,9 @@ public partial class CustomCalendarBe
 {
     public int Id { get; set; }
 
-    public DateTime? TimeOfDay { get; set; }
+    public int? HookupBeId { get; set; }
 
-    public virtual ICollection<HookupBe> HookupBes { get; set; } = new List<HookupBe>();
+    public DateTime? HookupDateTime { get; set; }
+
+    public virtual HookupBe? HookupBe { get; set; }
 }

@@ -21,8 +21,6 @@ public partial class sqlContext : DbContext
 
     public virtual DbSet<CustomCalendarBe> CustomCalendarBes { get; set; }
 
-    public virtual DbSet<CustomInterval> CustomIntervals { get; set; }
-
     public virtual DbSet<ElEffekforbrug> ElEffekforbrugs { get; set; }
 
     public virtual DbSet<ForespElTilslutning> ForespElTilslutnings { get; set; }
@@ -287,7 +285,7 @@ public partial class sqlContext : DbContext
 
         modelBuilder.Entity<Body>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__body__3214EC274F34532A");
+            entity.HasKey(e => e.Id).HasName("PK__body__3214EC272F4AF72F");
 
             entity.ToTable("body");
 
@@ -295,39 +293,31 @@ public partial class sqlContext : DbContext
             entity.Property(e => e.BodyType)
                 .HasMaxLength(50)
                 .HasColumnName("bodyType");
+            entity.Property(e => e.Custom).HasColumnName("custom");
             entity.Property(e => e.HookupBeId).HasColumnName("hookupBe_ID");
             entity.Property(e => e.ParameterName).HasColumnName("parameterName");
             entity.Property(e => e.SqlQuery).HasColumnName("sqlQuery");
 
             entity.HasOne(d => d.HookupBe).WithMany(p => p.Bodies)
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__body__hookupBe_I__45DE573A");
+                .HasConstraintName("FK__body__hookupBe_I__6DEC4894");
         });
 
         modelBuilder.Entity<CustomCalendarBe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CustomCa__3214EC27803B2360");
+            entity.HasKey(e => e.Id).HasName("PK__CustomCa__3214EC27BBDF2239");
 
             entity.ToTable("CustomCalendarBe");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.TimeOfDay).HasColumnType("datetime");
-        });
-
-        modelBuilder.Entity<CustomInterval>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("customInterval");
-
-            entity.Property(e => e.CustomCalendarBeId).HasColumnName("CustomCalendarBe_ID");
-            entity.Property(e => e.CustomIntervalDateTime)
+            entity.Property(e => e.HookupBeId).HasColumnName("hookupBe_ID");
+            entity.Property(e => e.HookupDateTime)
                 .HasColumnType("datetime")
-                .HasColumnName("customIntervalDateTime");
+                .HasColumnName("hookupDateTime");
 
-            entity.HasOne(d => d.CustomCalendarBe).WithMany()
-                .HasForeignKey(d => d.CustomCalendarBeId)
-                .HasConstraintName("FK__customInt__Custo__49AEE81E");
+            entity.HasOne(d => d.HookupBe).WithMany(p => p.CustomCalendarBes)
+                .HasForeignKey(d => d.HookupBeId)
+                .HasConstraintName("FK__CustomCal__hooku__6B0FDBE9");
         });
 
         modelBuilder.Entity<ElEffekforbrug>(entity =>
@@ -480,17 +470,16 @@ public partial class sqlContext : DbContext
 
             entity.HasOne(d => d.HookupBe).WithMany()
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__header__hookupBe__47C69FAC");
+                .HasConstraintName("FK__header__hookupBe__6FD49106");
         });
 
         modelBuilder.Entity<HookupBe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__hookupBe__3214EC270F26E030");
+            entity.HasKey(e => e.Id).HasName("PK__hookupBe__3214EC2708569B9E");
 
             entity.ToTable("hookupBe");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.CustomCalendarBeId).HasColumnName("CustomCalendarBe_ID");
             entity.Property(e => e.IntervalIsEveryDay).HasColumnName("interval_isEveryDay");
             entity.Property(e => e.IntervalIsEveryMonth).HasColumnName("interval_isEveryMonth");
             entity.Property(e => e.IntervalIsEveryWeek).HasColumnName("interval_isEveryWeek");
@@ -504,10 +493,6 @@ public partial class sqlContext : DbContext
             entity.Property(e => e.Url)
                 .IsUnicode(false)
                 .HasColumnName("url");
-
-            entity.HasOne(d => d.CustomCalendarBe).WithMany(p => p.HookupBes)
-                .HasForeignKey(d => d.CustomCalendarBeId)
-                .HasConstraintName("FK_hookupBe_interval");
         });
 
         modelBuilder.Entity<KapabilitetForsp>(entity =>
@@ -597,7 +582,7 @@ public partial class sqlContext : DbContext
 
         modelBuilder.Entity<Log>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__log__3214EC2778865113");
+            entity.HasKey(e => e.Id).HasName("PK__log__3214EC27559D8E7A");
 
             entity.ToTable("log");
 
@@ -611,7 +596,7 @@ public partial class sqlContext : DbContext
 
             entity.HasOne(d => d.HookupBe).WithMany(p => p.Logs)
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__log__hookupBe_ID__4D7F7902");
+                .HasConstraintName("FK__log__hookupBe_ID__73A521EA");
         });
 
         modelBuilder.Entity<Maskinkartotekt>(entity =>
