@@ -25,7 +25,7 @@ namespace apihookup.service
 
 
 
-        public string GenerateJSONWebToken(loginDto userInfo)
+        public string GenerateJSONWebToken(IoginDto userInfo)
         {
             var key = Encoding.UTF8.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -38,7 +38,7 @@ namespace apihookup.service
             return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
         }
 
-        public string login(loginDto dto)
+        public string login(IoginDto dto)
         {
             var  user = _repo.getUser(dto);
             if (user != null && user.password == dto.password)

@@ -1,5 +1,7 @@
 ﻿using apihookup.dto;
 using apihookup.interfaces;
+using apihookup.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,42 +9,12 @@ namespace apihookup.Controllers
 {
     public class hookupController : ControllerBase
     {
-        IHookupRepo _repo;
-        public hookupController(IHookupRepo repo)
+        private IHookupRepo _repo;
+        private IMapper _mapper;
+        public hookupController(IHookupRepo repo, IMapper mapper)
         {
             _repo = repo;
-        }
-
-        //get all registered hookups
-        //TODO: implement get all hookups
-        [Authorize]
-        [HttpGet("getHookups")]
-        public IActionResult GetHookups()
-        {
-            try
-            {
-                return Ok(_repo.GetHookups());
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-        //register a new hookup
-        //TODO: implement register a new hookup
-        [Authorize]
-        [HttpPost("registerHookup")]
-        public IActionResult RegisterHookup([FromBody] HookupDto dto)
-        {
-            try
-            {
-                return Ok(_repo.RegisterHookup(dto));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            _mapper = mapper;
         }
 
         //remove a hookup
@@ -67,14 +39,64 @@ namespace apihookup.Controllers
         [HttpPut("updateHookup")]
         public IActionResult UpdateHookup(HookupDto dto)
         {
-            try
-            {
-                return Ok(_repo.UpdateHookup(dto));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            throw new NotImplementedException();
+        }
+
+        //add a hookup
+        [Authorize]
+        [HttpPost("addHookup")]
+        public IActionResult AddHookup(HookupDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        //add a body
+        [Authorize]
+        [HttpPost("addBody")]
+        public IActionResult AddBody(Body dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        //add a header
+        [Authorize]
+        [HttpPost("addHeader")]
+        public IActionResult AddHeader(Header dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        //get all hookups
+        //as special dto with url, method type, id and interval
+        [Authorize]
+        [HttpGet("getAllHookups")]
+        public IActionResult GetAllHookups()
+        {
+            throw new NotImplementedException();
+        }
+
+        //get a hookubBe by id with all bodies and headers
+        [Authorize]
+        [HttpGet("getHookupById")]
+        public IActionResult GetHookupById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        //update a body
+        [Authorize]
+        [HttpPut("updateBody")]
+        public IActionResult UpdateBody(Body dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        //update a header
+        [Authorize]
+        [HttpPut("updateHeader")]
+        public IActionResult UpdateHeader(Header dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,16 +1,17 @@
 ﻿using apihookup.dto;
 using apihookup.interfaces;
+using apihookup.Models;
 
 namespace apihookup.repository
 {
     public class HookupRepo : IHookupRepo
     {
-        public List<HookupDto> GetHookups()
+        public List<HookupBe> GetHookups()
         {
             throw new NotImplementedException();
         }
 
-        public HookupDto RegisterHookup(HookupDto dto)
+        public HookupBe RegisterHookup(HookupBe dto)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +21,7 @@ namespace apihookup.repository
             throw new NotImplementedException();
         }
 
-        public HookupDto UpdateHookup(HookupDto dto)
+        public HookupBe UpdateHookup(HookupBe dto)
         {
             throw new NotImplementedException();
         }

@@ -1,7 +1,10 @@
+using apihookup.dto;
 using apihookup.helpers;
 using apihookup.interfaces;
+using apihookup.Models;
 using apihookup.repository;
 using apihookup.service;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -9,6 +12,19 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var config = new MapperConfiguration(conf =>
+{
+    // BE to DTO
+    conf.CreateMap<HookupBe, HookupDto>();
+    conf.CreateMap<Body,  HookupDto>();
+
+    // DTO to BE
+    conf.CreateMap<HookupDto, HookupBe>();
+    conf.CreateMap<HookupDto, Body>();
+});
+var mapper = config.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -17,11 +33,11 @@ builder.Services.AddSwaggerGen();
 
 //add scoped services
 builder.Services.AddScoped<IAuthService, authService>();
-
-//!!change to AuthRepo when ready to use real database!!
-builder.Services.AddScoped<IAuthRepo, MockRepo>();
-builder.Services.AddScoped<ISqlTableRepo, MockTableRepo>();
-builder.Services.AddScoped<IHookupRepo, MockHookupRepo>();
+builder.Services.AddScoped<IAuthRepo, AuthRepo>();
+builder.Services.AddScoped<IHookupRepo, HookupRepo>();
+builder.Services.AddScoped<ILogService, LogService>();
+builder.Services.AddScoped<ILogRepo, LogRepo>();
+builder.Services.AddDbContext<sqlContext>();
 
 //add appsettings to the configuration
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
