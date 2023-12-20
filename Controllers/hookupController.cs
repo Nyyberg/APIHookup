@@ -152,5 +152,61 @@ namespace apihookup.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [Authorize]
+        [HttpGet("getAllCalenders")]
+        public IActionResult GetAllCalenders(int id)
+        {
+            try
+            {
+                return Ok(_Service.GetAllCalenders(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPost("addListOfCalender")]
+        public IActionResult AddListOfCalender(List<IntervalDto> dtos)
+        {
+            try
+            {
+                return Ok(_Service.AddListOfCalender(dtos));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPost("addSingleCalender")]
+        public IActionResult AddSingleCalender(IntervalDto dto)
+        {
+            try
+            {
+                return Ok(_Service.AddSingleCalender(dto));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [Authorize]
+        [HttpDelete("removeCalender")]
+        public IActionResult RemoveCalender(int id)
+        {
+            try
+            {
+                _Service.RemoveCalender(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

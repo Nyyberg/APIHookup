@@ -85,5 +85,35 @@ namespace apihookup.service
             return _Mapper.Map<HookupDto>(_Repo.UpdateHookup(hookup));
 
         }
+
+        public object? GetAllCalenders(int id)
+        {
+            List<CustomCalendarBe> customCalendarBes = _Repo.GetAllCalenders(id);
+            return _Mapper.Map<List<IntervalDto>>(customCalendarBes);
+        }
+
+        public object? AddListOfCalender(List<IntervalDto> dtos)
+        {
+            //map dto to be
+            List<CustomCalendarBe> intervals = _Mapper.Map<List<CustomCalendarBe>>(dtos);
+            //add to db
+            List<CustomCalendarBe> customCalendarBes = _Repo.AddListOfCalender(intervals);
+            //map be to dto and return
+            return _Mapper.Map<List<IntervalDto>>(customCalendarBes);
+        }
+        public object? AddSingleCalender(IntervalDto dto)
+        {
+            //map dto to be
+            CustomCalendarBe interval = _Mapper.Map<CustomCalendarBe>(dto);
+            //add to db
+            CustomCalendarBe customCalendarBe = _Repo.AddSingleCalender(interval);
+            //map be to dto and return
+            return _Mapper.Map<IntervalDto>(customCalendarBe);
+        }
+        public void RemoveCalender(int id)
+        {
+            //pase id to repo
+            _Repo.RemoveCalender(id);
+        }
     }
 }

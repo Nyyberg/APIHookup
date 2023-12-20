@@ -70,5 +70,28 @@ namespace apihookup.repository
             _context.SaveChanges();
             return hookup;
         }
+
+        public List<CustomCalendarBe> GetAllCalenders(int id)
+        {
+            return _context.Set<CustomCalendarBe>().ToList();
+        }
+
+        public List<CustomCalendarBe> AddListOfCalender(List<CustomCalendarBe> intervals)
+        {
+            _context.AddRange(intervals);
+            _context.SaveChanges();
+            return intervals;
+        }
+        public CustomCalendarBe AddSingleCalender(CustomCalendarBe interval)
+        {
+            _context.Add(interval);
+            _context.SaveChanges();
+            return interval;
+        }
+        public void RemoveCalender(int id)
+        {
+            //get the interval
+            CustomCalendarBe interval = _context.Set<CustomCalendarBe>().Find(id) ?? throw new Exception("no calender found");
+        }
     }
 }

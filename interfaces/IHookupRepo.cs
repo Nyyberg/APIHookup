@@ -31,5 +31,9 @@ namespace apihookup.interfaces
 
         //update a hookup
         HookupBe UpdateHookup(HookupBe hookup);
+        List<CustomCalendarBe> AddListOfCalender(List<CustomCalendarBe> intervals);
+        CustomCalendarBe AddSingleCalender(CustomCalendarBe interval);
+        void RemoveCalender(int id);
+        List<CustomCalendarBe> GetAllCalenders(int id);
     }
 }

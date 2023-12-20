@@ -18,11 +18,13 @@ var config = new MapperConfiguration(conf =>
     conf.CreateMap<HookupBe, HookupDto>();
     conf.CreateMap<Body, BodyDto>();
     conf.CreateMap<Header, HeaderDto>();
+    conf.CreateMap<CustomCalendarBe, IntervalDto>();
 
     // DTO to BE
     conf.CreateMap<HookupDto, HookupBe>();
     conf.CreateMap<BodyDto, Body>();
     conf.CreateMap<HeaderDto, Header>();
+    conf.CreateMap<IntervalDto, CustomCalendarBe>();
 });
 
 //create mapper

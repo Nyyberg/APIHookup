@@ -30,8 +30,9 @@ namespace apihookup.interfaces
 
         //update a hookup
         HookupDto UpdateHookup(HookupDto dto);
-
-
-
+        object? AddListOfCalender(List<IntervalDto> dtos);
+        object? AddSingleCalender(IntervalDto dto);
+        void RemoveCalender(int id);
+        object? GetAllCalenders(int id);
     }
 }
