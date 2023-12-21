@@ -44,6 +44,7 @@ builder.Services.AddScoped<IHookupRepo, HookupRepo>();
 builder.Services.AddScoped<IHookupService, HookupService>();
 builder.Services.AddScoped<ILogService, LogService>();
 builder.Services.AddScoped<ILogRepo, LogRepo>();
+builder.Services.AddScoped<ICustomSqlRepo, CustomSqlRepo>();
 builder.Services.AddDbContext<sqlContext>();
 
 //add appsettings to the configuration, for global read access

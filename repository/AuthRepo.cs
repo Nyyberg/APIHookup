@@ -16,7 +16,7 @@ namespace apihookup.repository
         /// <exception cref="NotImplementedException"></exception>
         public User getUser(IoginDto dto)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }
