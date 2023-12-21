@@ -7,7 +7,6 @@
         public string? parameterName { get; set; }
         public string? custom { get; set; }
         public string? sqlQuery { get; set; }
-
         public int hookup_as_parameter { get; set; }
     }
 }
