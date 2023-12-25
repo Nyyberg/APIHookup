@@ -19,9 +19,15 @@ public partial class HookupBe
 
     public DateTime? IntervalTimeOfDay { get; set; }
 
-    public virtual ICollection<Body> Bodies { get; set; } = new List<Body>();
+    public virtual ICollection<Body> BodyHookupAsParameterNavigations { get; set; } = new List<Body>();
+
+    public virtual ICollection<Body> BodyHookupBes { get; set; } = new List<Body>();
 
     public virtual ICollection<CustomCalendarBe> CustomCalendarBes { get; set; } = new List<CustomCalendarBe>();
+
+    public virtual ICollection<Header> HeaderHookupAsParameterNavigations { get; set; } = new List<Header>();
+
+    public virtual ICollection<Header> HeaderHookupBes { get; set; } = new List<Header>();
 
     public virtual ICollection<Log> Logs { get; set; } = new List<Log>();
 }

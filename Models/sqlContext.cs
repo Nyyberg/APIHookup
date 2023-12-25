@@ -285,7 +285,7 @@ public partial class sqlContext : DbContext
 
         modelBuilder.Entity<Body>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__body__3214EC272F4AF72F");
+            entity.HasKey(e => e.Id).HasName("PK__body__3214EC271C1621E1");
 
             entity.ToTable("body");
 
@@ -294,18 +294,23 @@ public partial class sqlContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("bodyType");
             entity.Property(e => e.Custom).HasColumnName("custom");
+            entity.Property(e => e.HookupAsParameter).HasColumnName("hookup_as_parameter");
             entity.Property(e => e.HookupBeId).HasColumnName("hookupBe_ID");
             entity.Property(e => e.ParameterName).HasColumnName("parameterName");
             entity.Property(e => e.SqlQuery).HasColumnName("sqlQuery");
 
-            entity.HasOne(d => d.HookupBe).WithMany(p => p.Bodies)
+            entity.HasOne(d => d.HookupAsParameterNavigation).WithMany(p => p.BodyHookupAsParameterNavigations)
+                .HasForeignKey(d => d.HookupAsParameter)
+                .HasConstraintName("FK__body__hookup_as___7E22B05D");
+
+            entity.HasOne(d => d.HookupBe).WithMany(p => p.BodyHookupBes)
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__body__hookupBe_I__6DEC4894");
+                .HasConstraintName("FK__body__hookupBe_I__7D2E8C24");
         });
 
         modelBuilder.Entity<CustomCalendarBe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CustomCa__3214EC27BBDF2239");
+            entity.HasKey(e => e.Id).HasName("PK__CustomCa__3214EC27094DAF91");
 
             entity.ToTable("CustomCalendarBe");
 
@@ -317,7 +322,7 @@ public partial class sqlContext : DbContext
 
             entity.HasOne(d => d.HookupBe).WithMany(p => p.CustomCalendarBes)
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__CustomCal__hooku__6B0FDBE9");
+                .HasConstraintName("FK__CustomCal__hooku__7A521F79");
         });
 
         modelBuilder.Entity<ElEffekforbrug>(entity =>
@@ -460,22 +465,32 @@ public partial class sqlContext : DbContext
 
         modelBuilder.Entity<Header>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("header");
+            entity.HasKey(e => e.Id).HasName("PK__header__3214EC27571CCA86");
 
-            entity.Property(e => e.Data).HasColumnName("data");
+            entity.ToTable("header");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.HeaderKey).HasColumnName("headerKey");
+            entity.Property(e => e.HeaderValue).HasColumnName("headerValue");
+            entity.Property(e => e.HookupAsParameter).HasColumnName("hookup_as_parameter");
             entity.Property(e => e.HookupBeId).HasColumnName("hookupBe_ID");
+            entity.Property(e => e.SqlQuery).HasColumnName("sqlQuery");
+            entity.Property(e => e.Valuetpe)
+                .HasMaxLength(50)
+                .HasColumnName("valuetpe");
 
-            entity.HasOne(d => d.HookupBe).WithMany()
+            entity.HasOne(d => d.HookupAsParameterNavigation).WithMany(p => p.HeaderHookupAsParameterNavigations)
+                .HasForeignKey(d => d.HookupAsParameter)
+                .HasConstraintName("FK__header__hookup_a__0C70CFB4");
+
+            entity.HasOne(d => d.HookupBe).WithMany(p => p.HeaderHookupBes)
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__header__hookupBe__6FD49106");
+                .HasConstraintName("FK__header__hookupBe__0B7CAB7B");
         });
 
         modelBuilder.Entity<HookupBe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__hookupBe__3214EC2708569B9E");
+            entity.HasKey(e => e.Id).HasName("PK__hookupBe__3214EC27B3EB9C3F");
 
             entity.ToTable("hookupBe");
 
@@ -582,7 +597,7 @@ public partial class sqlContext : DbContext
 
         modelBuilder.Entity<Log>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__log__3214EC27559D8E7A");
+            entity.HasKey(e => e.Id).HasName("PK__log__3214EC27B9DE5E65");
 
             entity.ToTable("log");
 
@@ -596,7 +611,7 @@ public partial class sqlContext : DbContext
 
             entity.HasOne(d => d.HookupBe).WithMany(p => p.Logs)
                 .HasForeignKey(d => d.HookupBeId)
-                .HasConstraintName("FK__log__hookupBe_ID__73A521EA");
+                .HasConstraintName("FK__log__hookupBe_ID__04CFADEC");
         });
 
         modelBuilder.Entity<Maskinkartotekt>(entity =>

@@ -16,7 +16,11 @@ namespace apihookup.repository
         /// <exception cref="NotImplementedException"></exception>
         public User getUser(IoginDto dto)
         {
-            throw new System.NotImplementedException();
+            //return a user object with the username and password
+            User user = new User();
+            user.username = dto.username;
+            user.password = dto.password;
+            return user;
         }
     }
 }

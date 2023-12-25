@@ -21,10 +21,13 @@ var config = new MapperConfiguration(conf =>
     conf.CreateMap<CustomCalendarBe, IntervalDto>();
 
     // DTO to BE
-    conf.CreateMap<HookupDto, HookupBe>();
-    conf.CreateMap<BodyDto, Body>();
+    conf.CreateMap<HookupDto, HookupBe>()
+    .ForMember(x => x.Id, opt => opt.Ignore());
+    conf.CreateMap<BodyDto, Body>()
+    .ForMember(x => x.Id, opt => opt.Ignore());
     conf.CreateMap<HeaderDto, Header>();
-    conf.CreateMap<IntervalDto, CustomCalendarBe>();
+    conf.CreateMap<IntervalDto, CustomCalendarBe>()
+    .ForMember(x => x.Id, opt => opt.Ignore());
 });
 
 //create mapper

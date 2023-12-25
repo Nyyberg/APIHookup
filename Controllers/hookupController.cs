@@ -35,7 +35,7 @@ namespace apihookup.Controllers
         //TODO: implement update a hookup
         [Authorize]
         [HttpPut("updateHookup")]
-        public IActionResult UpdateHookup(HookupDto dto)
+        public IActionResult UpdateHookup([FromBody] HookupDto dto)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace apihookup.Controllers
         //add a hookup
         [Authorize]
         [HttpPost("addHookup")]
-        public IActionResult AddHookup(HookupDto dto)
+        public IActionResult AddHookup([FromBody] HookupDto dto)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace apihookup.Controllers
         //add a body
         [Authorize]
         [HttpPost("addBody")]
-        public IActionResult AddBody(BodyDto dto)
+        public IActionResult AddBody([FromBody] BodyDto dto)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace apihookup.Controllers
         //add a header
         [Authorize]
         [HttpPost("addHeader")]
-        public IActionResult AddHeader(HeaderDto dto)
+        public IActionResult AddHeader([FromBody] HeaderDto dto)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace apihookup.Controllers
         //update a header
         [Authorize]
         [HttpPut("updateHeader")]
-        public IActionResult UpdateHeader(HeaderDto dto)
+        public IActionResult UpdateHeader([FromBody] HeaderDto dto)
         {
             try
             {
@@ -169,7 +169,7 @@ namespace apihookup.Controllers
 
         [Authorize]
         [HttpPost("addListOfCalender")]
-        public IActionResult AddListOfCalender(List<IntervalDto> dtos)
+        public IActionResult AddListOfCalender([FromBody] List<IntervalDto> dtos)
         {
             try
             {
@@ -183,7 +183,7 @@ namespace apihookup.Controllers
 
         [Authorize]
         [HttpPost("addSingleCalender")]
-        public IActionResult AddSingleCalender(IntervalDto dto)
+        public IActionResult AddSingleCalender([FromBody] IntervalDto dto)
         {
             try
             {

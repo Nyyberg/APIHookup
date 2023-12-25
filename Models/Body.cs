@@ -17,5 +17,9 @@ public partial class Body
 
     public string? Custom { get; set; }
 
+    public int? HookupAsParameter { get; set; }
+
+    public virtual HookupBe? HookupAsParameterNavigation { get; set; }
+
     public virtual HookupBe? HookupBe { get; set; }
 }
