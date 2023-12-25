@@ -25,7 +25,8 @@ var config = new MapperConfiguration(conf =>
     .ForMember(x => x.Id, opt => opt.Ignore());
     conf.CreateMap<BodyDto, Body>()
     .ForMember(x => x.Id, opt => opt.Ignore());
-    conf.CreateMap<HeaderDto, Header>();
+    conf.CreateMap<HeaderDto, Header>()
+    .ForMember(x => x.Id, opt => opt.Ignore());
     conf.CreateMap<IntervalDto, CustomCalendarBe>()
     .ForMember(x => x.Id, opt => opt.Ignore());
 });
