@@ -1,14 +1,19 @@
-﻿using apihookup.interfaces;
+﻿using apihookup.dto;
+using apihookup.interfaces;
 using ApiHookup.Models;
+using AutoMapper;
 
 namespace apihookup.service
 {
     public class LogService : ILogService
     {
         private readonly ILogRepo _logRepo;
-        public LogService(ILogRepo logRepo)
+        private readonly IMapper _mapper;
+        public LogService(ILogRepo logRepo, IMapper mapper)
         {
+
             _logRepo = logRepo;
+            _mapper = mapper;
         }
 
         public void deleteLogById(int id)
@@ -21,14 +26,14 @@ namespace apihookup.service
             _logRepo.deleteLogsByHookupId(id);
         }
 
-        public List<Log> getAllLogs()
+        public List<logDto> getAllLogs()
         {
-            return _logRepo.getAllLogs();
+            return _mapper.Map<List<logDto>>(_logRepo.getAllLogs());
         }
 
-        public List<Log> getLogsByHookupId(int id)
+        public List<logDto> getLogsByHookupId(int id)
         {
-            return _logRepo.getLogsByHookupId(id);
+            return _mapper.Map<List<logDto>>(_logRepo.getLogsByHookupId(id));
         }
 
         public void logNewEvent(string ErrorMessage, bool success, HookupBe hookup)

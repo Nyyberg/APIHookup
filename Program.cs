@@ -19,6 +19,7 @@ var config = new MapperConfiguration(conf =>
     conf.CreateMap<Body, BodyDto>();
     conf.CreateMap<Header, HeaderDto>();
     conf.CreateMap<CustomCalendarBe, IntervalDto>();
+    conf.CreateMap<Log, logDto>();
 
     // DTO to BE
     conf.CreateMap<HookupDto, HookupBe>()
@@ -28,6 +29,8 @@ var config = new MapperConfiguration(conf =>
     conf.CreateMap<HeaderDto, Header>()
     .ForMember(x => x.Id, opt => opt.Ignore());
     conf.CreateMap<IntervalDto, CustomCalendarBe>()
+    .ForMember(x => x.Id, opt => opt.Ignore());
+    conf.CreateMap<logDto, Log>()
     .ForMember(x => x.Id, opt => opt.Ignore());
 });
 

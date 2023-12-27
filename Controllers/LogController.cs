@@ -1,5 +1,6 @@
 ﻿using apihookup.interfaces;
 using apihookup.service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace apihookup.Controllers
@@ -13,7 +14,7 @@ namespace apihookup.Controllers
         {
             _logService = logService;
         }
-
+        [Authorize]
         [HttpGet]
         [Route("GetAllLogs")]
         public IActionResult GetAllLogs()
@@ -27,7 +28,7 @@ namespace apihookup.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        [Authorize]
         [HttpGet("getLogById")]
         public IActionResult GetLogsByHookupId(int id)
         {
@@ -41,6 +42,7 @@ namespace apihookup.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("DeleteLogsByHookupId")]
         public IActionResult DeleteLogsByHookupId(int id)
@@ -55,7 +57,7 @@ namespace apihookup.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        [Authorize]
         [HttpDelete("deleteLogById")]
         public IActionResult DeleteLogById(int id)
         {

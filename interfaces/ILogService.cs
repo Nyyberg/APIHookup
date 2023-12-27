@@ -1,4 +1,5 @@
-﻿using ApiHookup.Models;
+﻿using apihookup.dto;
+using ApiHookup.Models;
 
 namespace apihookup.interfaces
 {
@@ -6,9 +7,9 @@ namespace apihookup.interfaces
     {
         public void logNewEvent(string ErrorMessage, bool success, HookupBe hookup);
 
-        public List<Log> getAllLogs();
+        public List<logDto> getAllLogs();
 
-        public List<Log> getLogsByHookupId(int id);
+        public List<logDto> getLogsByHookupId(int id);
 
         public void deleteLogsByHookupId(int id);
 
