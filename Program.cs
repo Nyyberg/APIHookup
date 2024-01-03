@@ -54,9 +54,10 @@ builder.Services.AddScoped<ILogRepo, LogRepo>();
 builder.Services.AddScoped<ICustomSqlRepo, CustomSqlRepo>();
 builder.Services.AddDbContext<sqlContext>();
 
-//add appsettings to the configuration, for global read access
-builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+//add AppSettings and ConnectionStrings to the configuration, for global read access
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("ConnectionStrings"));
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 
 //rules for authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

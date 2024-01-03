@@ -36,14 +36,9 @@ namespace apihookup.service
             return _mapper.Map<List<logDto>>(_logRepo.getLogsByHookupId(id));
         }
 
-        public void logNewEvent(string ErrorMessage, bool success, HookupBe hookup)
+        public void logNewEvent(logDto log)
         {
-            Log log = new Log
-            {
-                ErrorMessage = ErrorMessage,
-                IsSuccessful = success,
-                HookupBeId = hookup.Id,
-            };
+           _logRepo.logNewEvent(_mapper.Map<Log>(log));
         }
     }
 }

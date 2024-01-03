@@ -23,7 +23,7 @@ namespace apihookup.repository
         {
 
             //gets the connection string from appsettings.json though the AppSettings class
-            string connectionString = _options.ConnectionString;
+            string connectionString = _options.firstTest;
             
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

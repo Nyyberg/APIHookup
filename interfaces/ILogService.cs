@@ -5,7 +5,7 @@ namespace apihookup.interfaces
 {
     public interface ILogService
     {
-        public void logNewEvent(string ErrorMessage, bool success, HookupBe hookup);
+        public void logNewEvent(logDto log);
 
         public List<logDto> getAllLogs();
 
