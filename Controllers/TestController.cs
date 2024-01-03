@@ -13,9 +13,9 @@ namespace apihookup.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("tryQuery")]
-        public IActionResult TryQuery(string query)
+        public IActionResult TryQuery([FromBody] string query)
         {
             try
             {
